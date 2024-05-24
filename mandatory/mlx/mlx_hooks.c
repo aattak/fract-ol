@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 14:52:58 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/24 14:42:00 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/24 20:42:22 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,32 @@ int	cursor_move(int x, int y, t_data *data)
 {
 	if (data->img.shift_state)
 	{
-		data->img.c.r = data->img.x_start + (x * data->img.scale);
-		data->img.c.i = data->img.y_start - (y * data->img.scale);
+		data->img.c.r = scale_x(x, data);
+		data->img.c.i = scale_y(y, data);
 		render_fractal(data);
 	}
 	return (0);
 }
+//////////////////////
+void	ft_printf_p(unsigned long long p, char *base)
+{
+	char c;///////
 
+	if (p > 15)////
+		ft_printf_p(p / 16, base);///////////////
+	c = base[p % 16];//////////////
+	write(1, &c, 1);///////////
+}
+/////////////////////
 int	shift_on(int button, int x, int y, t_data *data)
 {
 	if (button == 1)
 	{
 		data->img.shift_state = 1;
+		ft_putstr("\n_____shift on______\n");//////////////////////////
+		ft_printf_p((unsigned long long)data, "0123456789abcdef");///////////////
+		//ft_putnbr(data->img.shift_state);//////////////////////
+		ft_putstr("\n___________\n");////////////////////////////
 		cursor_move(x, y, data);
 	}
 	return (0);

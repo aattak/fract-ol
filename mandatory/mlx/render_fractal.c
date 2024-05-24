@@ -6,62 +6,89 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:46:54 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/24 15:53:56 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/24 21:53:46 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
+double	scale_x(int x, t_data *data)
+{
+	double	r;
+
+	r = ((x * (data->img.x_end - data->img.x_start)) / (WIDTH - 1))
+		+ data->img.x_start;
+	return (r);
+}
+
+double	scale_y(int y, t_data *data)
+{
+	double	r;
+
+	r = ((y * (data->img.y_start - data->img.y_end)) / (HEIGHT - 1))
+		+ data->img.y_start;
+	return (r);
+}
+
 void	shift_color(t_data *data)
 {
-	int	i;
-	int	*pixel;
+	size_t	i;
+	int		*pixel;
 
 	i = 0;
-	pixel = data->img.addr;
+	pixel = (int *)data->img.addr;
 	while (i < data->img.addr_size)
 	{
 		if (pixel[i])
 			pixel[i] += 0x00050505;
 		i++;
 	}
+	data->img.color += 0x00050505;
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-		mlx->img.img_ptr, 0, 0);
+		data->img.img_ptr, 0, 0);
 }
 
-void	draw_fractal_pixel(t_data *data, int *pixel, int iterations)
+void	draw_fractal_pixel(t_data *data, size_t pos, t_complex p_coord)
 {
+	int	iterations;
+	int	*pixel;
+
+	pixel = (int *)data->img.addr;
+	iterations = data->fractal(data, p_coord);
 	if (iterations == data->img.iterations)
-		*pixel = 0;
+		pixel[pos] = 0;
 	else
-		*pixel = iterations * data->img.color;
+		pixel[pos] = iterations * data->img.color;
 }
 
 void	render_fractal(t_data *data)
 {
-	int				iterations;
-	unsigned long	i;
-	int				*pixel;
-	t_complex		p_coord;
+	int			x;
+	int			y;
+	size_t		image_pos;
+	t_complex	p_coord;
 
-	i = 0;
-	iterations = 0;
-	pixel = (int *)data->img.addr;
-	p_coord.r = data->img.x_start;
-	p_coord.i = data->img.y_start;
-	while (i < data->img.addr_size)
+	x = 0;
+	y = 0;
+	image_pos = 0;
+	while (image_pos < data->img.addr_size)
 	{
-		iterations = data->fractal(data, p_coord);
-		draw_fractal_pixel(data, &pixel[i], iterations);
-		if ((i + 1) % WIDTH == 0)
+		p_coord.i = scale_y(y, data);
+		while (1)
 		{
-			p_coord.r = data->img.x_start;
-			p_coord.i -= data->img.scale;
+			////////////ft_putnbr((int)image_pos);///////////////
+			///////////ft_putstr(" ");//////////
+			p_coord.r = scale_x(x, data);
+			draw_fractal_pixel(data, image_pos, p_coord);
+			image_pos++;
+			x++;
+			if ((image_pos % WIDTH != 0))
+				break ;
 		}
-		else
-			p_coord.r += data->img.scale;
-		i++;
+		//////ft_putstr("\n__________inc y____________\n");//////////
+		x = 0;
+		y++;
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-		mlx->img.img_ptr, 0, 0);
+		data->img.img_ptr, 0, 0);
 }

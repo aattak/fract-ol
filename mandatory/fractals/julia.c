@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:48:14 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/24 14:25:38 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/24 18:49:55 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	julia(t_data *data, t_complex p_coord)
 {
 	int			i;
-	long double	r_tmp;
+	double	r_tmp;
 	t_complex	z;
 	t_complex	c;
 

@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:45:38 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/24 11:06:32 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/24 20:45:04 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ void	iterations_init(t_data *data)
 void	plane_init(t_data *data)
 {
 	data->img.x_start = -2;
+	data->img.x_end = 2;
 	data->img.y_start = 2;
-	data->img.scale = 4 / (WIDTH - 1);
+	data->img.y_end = -2;
 }
 
 void	color_init(t_data *data)
