@@ -6,44 +6,59 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:27:26 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/24 17:39:16 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/26 18:51:28 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-void	ft_mlx_init(t_data *data)
+static int	win_alloc_failure(t_data *data)
 {
-		ft_putstr("\n_____mlx init______\n");//////////////////////////
-		ft_printf_p((unsigned long long)data, "0123456789abcdef");///////////////
-		//ft_putnbr(data->img.shift_state);//////////////////////
-		ft_putstr("\n___________\n");////////////////////////////
+	mlx_destroy_display(data->mlx_ptr);
+	free(data->mlx_ptr);
+	return (1);
+}
+
+static int	img_alloc_failure(t_data *data)
+{
+	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	mlx_destroy_display(data->mlx_ptr);
+	free(data->mlx_ptr);
+	return (1);
+}
+
+int	ft_mlx_init(t_data *data)
+{
 	data->mlx_ptr = mlx_init();
+	if (data->mlx_ptr == NULL)
+		return (1);
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "fract'ol");
+	if (data->win_ptr == NULL)
+		return (win_alloc_failure(data));
 	data->img.img_ptr = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
+	if (data->img.img_ptr == NULL)
+		return (img_alloc_failure(data));
 	data->img.addr = mlx_get_data_addr(data->img.img_ptr, &data->img.bpp,
 			&data->img.line_len, &data->img.endian);
 	data->img.addr_size = (WIDTH * HEIGHT);
-	mlx_mouse_hook(data->win_ptr, mouse_hook, data);
+	//mlx_mouse_hook(data->win_ptr, mouse_hook, data);
+	mlx_hook(data->win_ptr, ButtonPress, ButtonPressMask, mouse_hook, data);
 	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, key_hook, data);
 	mlx_hook(data->win_ptr, DestroyNotify, 0, mlx_quit, data);
 	mlx_loop_hook(data->mlx_ptr, update_iterations, data);
 	if (data->img.shift_complex_feature == 1)
 	{
-		mlx_hook(data->win_ptr, ButtonPress, ButtonPressMask, shift_on, data);
+		//mlx_hook(data->win_ptr, ButtonPress, ButtonPressMask, shift_on, data);
 		mlx_hook(data->win_ptr, ButtonRelease,
 			ButtonReleaseMask, shift_off, data);
 		mlx_hook(data->win_ptr, MotionNotify,
 			PointerMotionMask, cursor_move, data);
 	}
+	return (0);
 }
 
 void	mlx_mem_free(t_data *data)
 {
-		ft_putstr("\n_____mlx mem free______\n");//////////////////////////
-		ft_printf_p((unsigned long long)data, "0123456789abcdef");///////////////
-		//ft_putnbr(data->img.shift_state);//////////////////////
-		ft_putstr("\n___________\n");////////////////////////////
 	mlx_destroy_image(data->mlx_ptr, data->img.img_ptr);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
@@ -52,10 +67,6 @@ void	mlx_mem_free(t_data *data)
 
 int	mlx_quit(t_data *data)
 {
-		ft_putstr("\n_____mlx quit______\n");//////////////////////////
-		ft_printf_p((unsigned long long)data, "0123456789abcdef");///////////////
-		//ft_putnbr(data->img.shift_state);//////////////////////
-		ft_putstr("\n___________\n");////////////////////////////
 	mlx_loop_end(data->mlx_ptr);
 	mlx_loop_hook(data->mlx_ptr, NULL, NULL);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:45:38 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/24 20:45:04 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/26 16:57:54 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,17 @@ void	iterations_init(t_data *data)
 
 void	plane_init(t_data *data)
 {
-	data->img.x_start = -2;
-	data->img.x_end = 2;
-	data->img.y_start = 2;
-	data->img.y_end = -2;
+	data->img.x_start = (double)X_START;
+	data->img.x_norm = (double)X_END - data->img.x_start;
+	data->img.y_norm = (data->img.x_norm * (HEIGHT - 1)) / (WIDTH - 1);
+	data->img.y_start = (data->img.y_norm / 2);
+	data->img.x_move = 0;
+	data->img.y_move = 0;
 }
 
 void	color_init(t_data *data)
 {
-	data->img.color = 0x0005142B;
+	data->img.color = COLOR;
 }
 
 void	fractal_init(t_data *data)

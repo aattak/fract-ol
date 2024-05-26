@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:17:35 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/24 10:30:45 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/25 15:21:00 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,17 @@ size_t	ft_strlen(char *str)
 void	ft_putnbr(int nbr)
 {
 	char	c;
+	long	nb;
 
-	if (nbr > 9)
-		ft_putnbr(nbr / 10);
-	c = (nbr % 10) + '0';
+	nb = (long)nbr;
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		nb = -nb;
+	}
+	if (nb > 9)
+		ft_putnbr((int)(nb / 10));
+	c = (nb % 10) + '0';
 	write(1, &c, 1);
 }
 

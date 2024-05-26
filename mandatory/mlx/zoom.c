@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:11:45 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/24 18:50:31 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/26 19:42:25 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,32 @@
 
 void	zoom_in(t_data *data, int x, int y)
 {
-	double	old_scale;
-
-	old_scale = data->img.scale;
-	data->img.scale /= ZOOM;
-	data->img.x_start = data->img.x_start + (x * (old_scale - data->img.scale));
-	data->img.y_start = data->img.y_start + (y * (data->img.scale - old_scale));
+	(void)x;
+	(void)y;
+	ft_putstr("zoom in\n");
+//	double	old_scale;
+//
+//	old_scale = data->img.scale;
+//	data->img.scale /= ZOOM_IN;
+//	data->img.x_start = data->img.x_start + (x * (old_scale - data->img.scale));
+//	data->img.y_start = data->img.y_start + (y * (data->img.scale - old_scale));
+	data->img.x_norm *= ZOOM;
+	data->img.y_norm *= ZOOM;
 	render_fractal(data);
 }
 
 void	zoom_out(t_data *data, int x, int y)
 {
-	double	old_scale;
-
-	old_scale = data->img.scale;
-	data->img.scale *= ZOOM;
-	data->img.x_start = data->img.x_start + (x * (old_scale - data->img.scale));
-	data->img.y_start = data->img.y_start + (y * (data->img.scale - old_scale));
+	(void)x;
+	(void)y;
+	ft_putstr("zoom out\n");
+//	double	old_scale;
+//
+//	old_scale = data->img.scale;
+//	data->img.scale *= ZOOM_OUT;
+//	data->img.x_start = data->img.x_start + (x * (old_scale - data->img.scale));
+//	data->img.y_start = data->img.y_start + (y * (data->img.scale - old_scale));
+	data->img.x_norm /= ZOOM;
+	data->img.y_norm /= ZOOM;
 	render_fractal(data);
 }

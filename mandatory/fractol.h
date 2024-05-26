@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:22:41 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/24 21:46:30 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/26 19:44:35 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,24 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 
-# define WIDTH 600
-# define HEIGHT 600
+# define WIDTH 800
+# define HEIGHT 800
 
-# define MOVE 50
-# define ZOOM 10
+# define X_START -2
+# define X_END 2
+
+# define MOVE 10
+# define ZOOM 1.05
+///////////# define ZOOM_OUT 0.5
 
 # define SCROLL_ZOOM_IN 4
 # define SCROLL_ZOOM_OUT 5
+# define MOUSE_LEFT_CLICK 1
 
 # define MOUSE_LEFT_BUTTON 1
+
+# define COLOR 0x0005142B
+# define COLOR_SHIFT 1.018
 
 typedef struct s_complex
 {
@@ -52,11 +60,13 @@ typedef struct s_img
 	int			shift_complex_feature;
 	int			color;
 	size_t		addr_size;
-	double	x_start;
-	double	x_end;
-	double	y_start;
-	double	y_end;
-	double	scale;////////////////// to delete
+	double		x_move;
+	double		y_move;
+	double		x_start;
+	double		x_norm;
+	double		y_start;
+	double		y_norm;
+	double		scale;////////////////// to delete
 	t_complex	z;
 	t_complex	c;
 }	t_img;
@@ -68,11 +78,6 @@ typedef struct s_data
 	t_img		img;
 	int			(*fractal)(struct s_data *, t_complex);
 }	t_data;
-
-
-//////////////////////////////////////////
-void	ft_printf_p(unsigned long long p, char *base); //////////////////
-////////////////////////////////////////////
 
 void	shift_state_init(t_data *data);
 void	iterations_init(t_data *data);
@@ -88,7 +93,7 @@ void	ft_putstr(char *str);
 void	increase_iterations(t_data *data);
 void	decrease_iterations(t_data *data);
 int		update_iterations(t_data *data);
-void	ft_mlx_init(t_data *data);
+int		ft_mlx_init(t_data *data);
 void	mlx_mem_free(t_data *data);
 int		mlx_quit(t_data *data);
 int		mouse_hook(int button, int x, int y, t_data *data);
@@ -101,7 +106,7 @@ void	go_left(t_data *data);
 void	go_up(t_data *data);
 void	go_down(t_data *data);
 void	shift_color(t_data *data);
-void	draw_fractal_pixel(t_data *data, size_t pos, t_complex p_coord);
+void	draw_fractal_pixel(t_data *data, t_complex p_coord, int x, int y);
 void	render_fractal(t_data *data);
 void	zoom_in(t_data *data, int x, int y);
 void	zoom_out(t_data *data, int x, int y);
