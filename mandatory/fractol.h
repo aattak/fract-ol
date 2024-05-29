@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:22:41 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/26 19:44:35 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/29 09:01:42 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <limits.h>
+# include <math.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
 
@@ -30,7 +31,6 @@
 
 # define MOVE 10
 # define ZOOM 1.05
-///////////# define ZOOM_OUT 0.5
 
 # define SCROLL_ZOOM_IN 4
 # define SCROLL_ZOOM_OUT 5
@@ -38,8 +38,8 @@
 
 # define MOUSE_LEFT_BUTTON 1
 
-# define COLOR 0x0005142B
-# define COLOR_SHIFT 1.018
+# define COLOR 0x00BF7738//0x0005142B
+# define COLOR_SHIFT 0x00050505//1.016
 
 typedef struct s_complex
 {
@@ -59,6 +59,7 @@ typedef struct s_img
 	int			shift_state;
 	int			shift_complex_feature;
 	int			color;
+	int			color_shift;
 	size_t		addr_size;
 	double		x_move;
 	double		y_move;
@@ -66,9 +67,9 @@ typedef struct s_img
 	double		x_norm;
 	double		y_start;
 	double		y_norm;
-	double		scale;////////////////// to delete
 	t_complex	z;
 	t_complex	c;
+	const int	*palette;///to delete
 }	t_img;
 
 typedef struct s_data

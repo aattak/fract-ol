@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:46:54 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/26 17:54:02 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/29 08:00:11 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,18 @@ void	draw_fractal_pixel(t_data *data, t_complex p_coord, int x, int y)
 	int		iterations;
 	char	*pixel;
 	size_t	index;
+	//double	magnitude;
+	//t_complex	z;
 
 	index = ((y * WIDTH) + x) * (data->img.bpp / 8);
 	pixel = data->img.addr + index;
-	iterations = data->fractal(data, p_coord);
+	//z = data->img.z;
+	//magnitude = sqrt((z.r * z.r) + (z.i * z.i));
+	iterations = data->fractal(data, p_coord);// + 1 - log(log2(magnitude));
 	if (iterations == data->img.iterations)
 		*(int *)pixel = 0;
 	else
-		*(int *)pixel = iterations * data->img.color;
+		*(int *)pixel = (iterations * data->img.color) + data->img.color_shift;
 }
 
 void	render_fractal(t_data *data)
@@ -67,8 +71,4 @@ void	render_fractal(t_data *data)
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img.img_ptr, 0, 0);
-	ft_putnbr((int)data->img.x_norm);
-	write(1, " ", 1);
-	ft_putnbr((int)data->img.y_norm);
-	write(1, "\n", 1);
 }

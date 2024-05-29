@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:48:51 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/25 15:14:37 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/28 10:35:36 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int	mandelbrot(t_data *data, t_complex p_coord)
 		z.i = (2 * r_tmp * z.i) + c.i;
 		i++;
 	}
+	data->img.z = z;
 	return (i);
 }

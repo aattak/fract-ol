@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 17:04:34 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/26 17:25:40 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/29 08:08:22 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	shift_color_up(t_data *data, int *pixel)
 	while (i < data->img.addr_size)
 	{
 		if (pixel[i])
-			pixel[i] *= COLOR_SHIFT;
+			pixel[i] += COLOR_SHIFT;
 		i++;
 	}
-	data->img.color *= COLOR_SHIFT;
+	data->img.color_shift += COLOR_SHIFT;
 }
 
 void	shift_color_down(t_data *data, int *pixel)
@@ -34,10 +34,10 @@ void	shift_color_down(t_data *data, int *pixel)
 	while (i < data->img.addr_size)
 	{
 		if (pixel[i])
-			pixel[i] /= COLOR_SHIFT;
+			pixel[i] += COLOR_SHIFT;
 		i++;
 	}
-	data->img.color /= COLOR_SHIFT;
+	data->img.color_shift += COLOR_SHIFT;
 }
 
 void	shift_color(t_data *data)
@@ -45,17 +45,18 @@ void	shift_color(t_data *data)
 	int		*pixel;
 
 	pixel = (int *)data->img.addr;
-	if (data->img.color * COLOR_SHIFT > 0 && data->img.color * COLOR_SHIFT < 0x00FFFFFF)
-		shift_color_up(data, pixel);
-	else
-	{
-		if (data->img.color * COLOR_SHIFT > 0x00FFFFFF)
-			data->img.color *= -1;
-		if (data->img.color * COLOR_SHIFT != 0)
-			shift_color_down(data, pixel);
-		else
-			data->img.color = COLOR;
-	}
+	shift_color_up(data, pixel);
+//	if (data->img.color * COLOR_SHIFT > 0 && data->img.color * COLOR_SHIFT < 0x00FFFFFF)
+//		shift_color_up(data, pixel);
+//	else
+//	{
+//		if (data->img.color * COLOR_SHIFT > 0x00FFFFFF)
+//			data->img.color *= -1;
+//		if (data->img.color * COLOR_SHIFT != 0)
+//			shift_color_down(data, pixel);
+//		else
+//			data->img.color = COLOR;
+//	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img.img_ptr, 0, 0);
 	ft_putnbr(data->img.color);
