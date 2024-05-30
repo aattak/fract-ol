@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:46:54 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/29 08:00:11 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/30 14:37:19 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,14 @@ void	draw_fractal_pixel(t_data *data, t_complex p_coord, int x, int y)
 	int		iterations;
 	char	*pixel;
 	size_t	index;
-	//double	magnitude;
-	//t_complex	z;
 
 	index = ((y * WIDTH) + x) * (data->img.bpp / 8);
 	pixel = data->img.addr + index;
-	//z = data->img.z;
-	//magnitude = sqrt((z.r * z.r) + (z.i * z.i));
-	iterations = data->fractal(data, p_coord);// + 1 - log(log2(magnitude));
+	iterations = data->fractal(data, p_coord);
 	if (iterations == data->img.iterations)
 		*(int *)pixel = 0;
 	else
-		*(int *)pixel = (iterations * data->img.color) + data->img.color_shift;
+		*(int *)pixel = data->generate_color(*data, iterations);
 }
 
 void	render_fractal(t_data *data)
