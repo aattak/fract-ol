@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 14:52:58 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 18:58:46 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/31 20:12:44 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	key_release_hook(int keycode, t_data *data)
 	else if (keycode == XK_BackSpace)
 	{
 		plane_init(data);
-		render_fractal(data);
+		data->img.to_re_render = 1;
 	}
 	return (0);
 }
@@ -65,10 +65,6 @@ int	mouse_press_hook(int button, int x, int y, t_data *data)
 int	cursor_move_hook(int x, int y, t_data *data)
 {
 	if (data->img.shift_state)
-	{
-		data->img.c.r = scale_x(x, data);
-		data->img.c.i = scale_y(y, data);
-		render_fractal(data);
-	}
+		shift_complex(x, y, data);
 	return (0);
 }

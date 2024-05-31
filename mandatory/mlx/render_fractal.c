@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:46:54 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/30 14:37:19 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/31 20:47:24 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,26 +45,31 @@ void	draw_fractal_pixel(t_data *data, t_complex p_coord, int x, int y)
 		*(int *)pixel = data->generate_color(*data, iterations);
 }
 
-void	render_fractal(t_data *data)
+int	render_fractal(t_data *data)
 {
 	int			x;
 	int			y;
 	t_complex	p_coord;
 
-	x = 0;
-	y = 0;
-	while (y < HEIGHT)
+	if (data->img.to_re_render)
 	{
-		p_coord.i = scale_y(y, data);
-		while (x < WIDTH)
-		{
-			p_coord.r = scale_x(x, data);
-			draw_fractal_pixel(data, p_coord, x, y);
-			x++;
-		}
 		x = 0;
-		y++;
+		y = 0;
+		data->img.to_re_render = 0;
+		while (y < HEIGHT)
+		{
+			p_coord.i = scale_y(y, data);
+			while (x < WIDTH)
+			{
+				p_coord.r = scale_x(x, data);
+				draw_fractal_pixel(data, p_coord, x, y);
+				x++;
+			}
+			x = 0;
+			y++;
+		}
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->img.img_ptr, 0, 0);
 	}
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-		data->img.img_ptr, 0, 0);
+	return (0);
 }

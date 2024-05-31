@@ -6,22 +6,11 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:45:38 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 18:25:54 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/31 20:52:34 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
-
-void	shift_state_init(t_data *data)
-{
-	data->img.shift_state = 0;
-}
-
-void	iterations_init(t_data *data)
-{
-	data->img.to_re_render = 0;
-	data->img.iterations = 30;
-}
 
 void	plane_init(t_data *data)
 {
@@ -62,8 +51,9 @@ void	color_init(t_data *data)
 
 void	fractal_init(t_data *data)
 {
-	shift_state_init(data);
-	iterations_init(data);
+	data->img.iterations = 30;
+	data->img.shift_state = 0;
+	data->img.to_re_render = 1;
 	plane_init(data);
 	color_init(data);
 }

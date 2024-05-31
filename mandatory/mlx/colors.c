@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 17:04:34 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 12:06:58 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/31 20:09:39 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	switch_color_generator(t_data *data)
 		data->generate_color = rgb_multiplier;
 	else
 		data->generate_color = rgb_adder;
-	render_fractal(data);
+	data->img.to_re_render = 1;//////////////////////
+	//render_fractal(data);
 }
 
 void	shift_color(t_data *data)
@@ -76,5 +77,6 @@ void	shift_palette(t_data *data)
 		data->img.palette_index = 0;
 	data->img.color_shift = 0;
 	data->img.color = data->img.palette[data->img.palette_index];
-	render_fractal(data);
+	data->img.to_re_render = 1;//////////////////////
+	//render_fractal(data);
 }

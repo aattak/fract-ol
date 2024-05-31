@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:10:22 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/24 14:16:56 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/31 20:47:36 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,4 @@ void	decrease_iterations(t_data *data)
 	ft_putnbr(data->img.iterations);
 	ft_putstr(" iterations\n");
 	data->img.to_re_render = 1;
-}
-
-int	update_iterations(t_data *data)
-{
-	if (data->img.to_re_render)
-	{
-		data->img.to_re_render = 0;
-		render_fractal(data);
-	}
-	return (0);
 }

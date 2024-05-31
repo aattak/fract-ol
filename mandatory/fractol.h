@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:22:41 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 18:57:36 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/31 20:52:11 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ typedef struct s_data
 	int			(*generate_color)(struct s_data, int);
 }	t_data;
 
-void	shift_state_init(t_data *data);
-void	iterations_init(t_data *data);
 void	plane_init(t_data *data);
 void	color_init(t_data *data);
 void	fractal_init(t_data *data);
@@ -93,7 +91,6 @@ void	ft_putnbr(int nbr);
 void	ft_putstr(char *str);
 void	increase_iterations(t_data *data);
 void	decrease_iterations(t_data *data);
-int		update_iterations(t_data *data);
 int		ft_mlx_init(t_data *data);
 void	mlx_mem_free(t_data *data);
 int		mlx_quit(t_data *data);
@@ -112,7 +109,7 @@ void	shift_color(t_data *data);
 void	shift_palette(t_data *data);
 void	switch_color_generator(t_data *data);
 void	draw_fractal_pixel(t_data *data, t_complex p_coord, int x, int y);
-void	render_fractal(t_data *data);
+int		render_fractal(t_data *data);
 int		rgb_adder(t_data data, int iterations);
 int		rgb_multiplier(t_data data, int iterations);
 void	zoom_in(t_data *data, int x, int y);
