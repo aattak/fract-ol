@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:22:41 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/30 17:48:36 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/31 08:40:48 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_img
 	int			color;
 	int			color_shift;
 	int			palette_index;
-	const int	*palette;
+	int			palette[PALETTE_SIZE];
 	size_t		addr_size;
 	double		x_move;
 	double		y_move;
