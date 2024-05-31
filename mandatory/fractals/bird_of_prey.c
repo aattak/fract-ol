@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   bird_of_prey.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 14:48:51 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 17:01:58 by aattak           ###   ########.fr       */
+/*   Created: 2024/05/31 12:56:21 by aattak            #+#    #+#             */
+/*   Updated: 2024/05/31 16:55:10 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-int	mandelbrot(t_data *data, t_complex p_coord)
+int	bird_of_prey(t_data *data, t_complex p_coord)
 {
 	int			i;
 	double		r_tmp;
@@ -23,11 +23,12 @@ int	mandelbrot(t_data *data, t_complex p_coord)
 	z.r = 0;
 	z.i = 0;
 	c = p_coord;
+	c.i *= -1;
 	while (i < data->img.iterations && ((z.r * z.r) + (z.i * z.i)) < 4)
 	{
 		r_tmp = z.r;
-		z.r = (z.r * z.r) - (z.i * z.i) + c.r;
-		z.i = (2 * r_tmp * z.i) + c.i;
+		z.r = fabs(z.r * z.r * z.r) - fabs(3 * z.r * z.i * z.i) + c.r;
+		z.i = fabs(3 * r_tmp * r_tmp * z.i) - fabs(z.i * z.i * z.i) + c.i;
 		i++;
 	}
 	return (i);

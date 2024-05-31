@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 16:24:42 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/30 17:42:11 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/31 19:00:42 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@ void	shift_complex(int x, int y, t_data *data)
 	}
 }
 
-void	shift_complex_on(int x, int y, t_data *data)
+void	shift_complex_on(t_data *data)
 {
 	data->img.shift_state = 1;
-	shift_complex(x, y, data);
 }
 
 void	shift_complex_off(t_data *data)

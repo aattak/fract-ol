@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:29:18 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 10:30:09 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/31 19:01:50 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,6 @@ void	parse_input(int ac, char **av, t_data *data)
 	}
 	else
 		data->fractal = mandelbrot;
-
-
-	if (1)
-		data->generate_color = rgb_adder;
-	else
-		data->generate_color = rgb_multiplier;
-
 	if (0)
 		parsing_error();
 }

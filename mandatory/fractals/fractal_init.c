@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:45:38 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 08:54:41 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/31 18:25:54 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	shift_state_init(t_data *data)
 
 void	iterations_init(t_data *data)
 {
+	data->img.to_re_render = 0;
 	data->img.iterations = 30;
 }
 
@@ -35,11 +36,16 @@ void	plane_init(t_data *data)
 void	color_init(t_data *data)
 {
 	int			i;
-	const int	palette[PALETTE_SIZE] = {
-		0xFF0960, 0xFF7F00, 0xFFFF00, 0x7FFF00,
-		0x00FF00, 0x00FF7F, 0x00FFFF, 0x007FFF,
-		0x0000FF, 0x7F00FF, 0xFF00FF, 0xFF007F,
-		0xFF1493, 0xFFD700, 0x8A2BE2, 0x00FA9A
+	const int	palette[PALETTE_SIZE] = {//0xFFEB00
+		0xF7A654, 0xFC0019, 0x01FF4F, 0xFF01D7, 0x5600CC, 0x00EDF5, 0x5763CF,
+		0x99FF94, 0xFEF77C, 0xF7A654, 0xEF7779, 0xB3498B, 0xFFFF00, 0x39FF14,
+		0xFF00FF, 0x00FFFF, 0x3A2170, 0xDB831C, 0xBE2924, 0xDE4959, 0x11808C,
+		0xFD00FF, 0xFDFF00, 0x00FF38, 0x00F9FF, 0x3C00FF, 0xE5A7AF, 0xEEBAA7,
+		0xF2CEA0, 0xF9E29A, 0xFFF68F, 0x384840, 0x406078, 0xD8C068, 0xC06868,
+		0x806878, 0x583840, 0xE0C878, 0x506038, 0x586068, 0x6080A0, 0x446467,
+		0xB8C9B0, 0xBEECCC, 0x7A5C6A, 0xBF7738, 0xE8D019, 0x04662E, 0x2C89B3,
+		0x331D59, 0xDE282D, 0xE0457B, 0x69B3E7, 0x9EB356, 0xD38235, 0x03257E,
+		0x784E90, 0x3F2021, 0xB04A5A, 0xBA5B3F, 0xCB9576, 0x7FA0AC, 0xEEE5D3
 	};
 
 	i = 0;
@@ -51,6 +57,7 @@ void	color_init(t_data *data)
 	data->img.color_shift = 0;
 	data->img.palette_index = 0;
 	data->img.color = palette[0];
+	data->generate_color = rgb_adder;
 }
 
 void	fractal_init(t_data *data)

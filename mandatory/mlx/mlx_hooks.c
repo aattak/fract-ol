@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 14:52:58 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/30 17:48:19 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/31 18:58:46 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ int	key_press_hook(int keycode, t_data *data)
 		decrease_iterations(data);
 	else if (keycode == XK_space)
 		shift_color(data);
+	else if (keycode == XK_Shift_L && data->img.shift_complex_feature == 1)
+	{
+		shift_complex_on(data);
+	}
 	return (0);
 }
 
@@ -39,6 +43,8 @@ int	key_release_hook(int keycode, t_data *data)
 		shift_palette(data);
 	else if (keycode == XK_c)
 		switch_color_generator(data);
+	else if (keycode == XK_Shift_L && data->img.shift_complex_feature == 1)
+		shift_complex_off(data);
 	else if (keycode == XK_BackSpace)
 	{
 		plane_init(data);
@@ -53,17 +59,6 @@ int	mouse_press_hook(int button, int x, int y, t_data *data)
 		zoom_in(data, x, y);
 	else if (button == SCROLL_ZOOM_OUT)
 		zoom_out(data, x, y);
-	else if (button == MOUSE_LEFT_CLICK && data->img.shift_complex_feature == 1)
-		shift_complex_on(x, y, data);
-	return (0);
-}
-
-int	mouse_release_hook(int button, int x, int y, t_data *data)
-{
-	(void)x;
-	(void)y;
-	if (button == MOUSE_LEFT_CLICK && data->img.shift_complex_feature == 1)
-		shift_complex_off(data);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:22:41 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 08:40:48 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/31 18:57:36 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 
 //# define COLOR 0x00BF7738//0x0005142B
 # define COLOR_SHIFT 0x00050505
-# define PALETTE_SIZE 16
+# define PALETTE_SIZE 63
 
 typedef struct s_complex
 {
@@ -98,12 +98,11 @@ int		ft_mlx_init(t_data *data);
 void	mlx_mem_free(t_data *data);
 int		mlx_quit(t_data *data);
 int		mouse_press_hook(int button, int x, int y, t_data *data);
-int		mouse_release_hook(int button, int x, int y, t_data *data);
 int		cursor_move_hook(int x, int y, t_data *data);
 int		key_press_hook(int keycode, t_data *data);
 int		key_release_hook(int keycode, t_data *data);
 void	shift_complex(int x, int y, t_data *data);
-void	shift_complex_on(int x, int y, t_data *data);
+void	shift_complex_on(t_data *data);
 void	shift_complex_off(t_data *data);
 void	go_right(t_data *data);
 void	go_left(t_data *data);
@@ -120,5 +119,10 @@ void	zoom_in(t_data *data, int x, int y);
 void	zoom_out(t_data *data, int x, int y);
 double	scale_x(int x, t_data *data);
 double	scale_y(int y, t_data *data);
+
+int	julia_cube(t_data *data, t_complex p_coord);
+int	mandelbrot_cube(t_data *data, t_complex p_coord);
+int	burning_ship(t_data *data, t_complex p_coord);
+int	bird_of_prey(t_data *data, t_complex p_coord);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:27:26 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 08:59:52 by aattak           ###   ########.fr       */
+/*   Updated: 2024/05/31 19:01:32 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ int	ft_mlx_init(t_data *data)
 	mlx_hook(data->win_ptr, KeyRelease, KeyReleaseMask, key_release_hook, data);
 	mlx_hook(data->win_ptr, ButtonPress,
 		ButtonPressMask, mouse_press_hook, data);
-	mlx_hook(data->win_ptr, ButtonRelease,
-		ButtonReleaseMask, mouse_release_hook, data);
 	mlx_hook(data->win_ptr, MotionNotify,
 		PointerMotionMask, cursor_move_hook, data);
 	mlx_hook(data->win_ptr, DestroyNotify, 0, mlx_quit, data);
