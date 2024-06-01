@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:17:35 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/25 15:21:00 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/01 12:09:43 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ size_t	ft_strlen(char *str)
 	return (len);
 }
 
-void	ft_putnbr(int nbr)
+void	ft_putnbr_fd(int nbr, int fd)
 {
 	char	c;
 	long	nb;
@@ -34,16 +34,27 @@ void	ft_putnbr(int nbr)
 	nb = (long)nbr;
 	if (nb < 0)
 	{
-		write(1, "-", 1);
+		write(fd, "-", 1);
 		nb = -nb;
 	}
 	if (nb > 9)
-		ft_putnbr((int)(nb / 10));
+		ft_putnbr_fd((int)(nb / 10), fd);
 	c = (nb % 10) + '0';
-	write(1, &c, 1);
+	write(fd, &c, 1);
 }
 
-void	ft_putstr(char *str)
+void	ft_putstr_fd(char *str, int fd)
 {
-	write(1, str, ft_strlen(str));
+	write(fd, str, ft_strlen(str));
+}
+
+void	invalid_input(void)
+{
+	ft_putstr_fd("USAGE :\n\t-Mandelbrot : ./fractol mandelbrot\n\t\
+		-Mandelbrot Cube : ./fractol mandelbrot_cube\n\t-Julia : ./fractol \
+		julia <real part of constant c> <imaginary part of constant c>\n\t\
+		-Julia Cube : ./fractol julia_cube <real part of constant c> \
+		<imaginary part of constant c>\n\t-Burning Ship : ./fractol \
+		burning_ship\n\t-Bird of Prey : ./fractol bird_of_prey\n", 2);
+	exit(1);
 }

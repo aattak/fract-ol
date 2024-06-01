@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:10:22 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 20:47:36 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/01 09:25:36 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	increase_iterations(t_data *data)
 		data->img.iterations = 0;
 	ft_putnbr(data->img.iterations);
 	ft_putstr(" iterations\n");
-	data->img.to_re_render = 1;
+	data->img.to_render = 1;
 }
 
 void	decrease_iterations(t_data *data)
@@ -32,5 +32,5 @@ void	decrease_iterations(t_data *data)
 	}
 	ft_putnbr(data->img.iterations);
 	ft_putstr(" iterations\n");
-	data->img.to_re_render = 1;
+	data->img.to_render = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:22:41 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 20:52:11 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/01 11:41:09 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,8 @@
 
 # define SCROLL_ZOOM_IN 4
 # define SCROLL_ZOOM_OUT 5
-# define MOUSE_LEFT_CLICK 1
 
-//# define COLOR 0x00BF7738//0x0005142B
+//# define COLOR 0x0005142B
 # define COLOR_SHIFT 0x00050505
 # define PALETTE_SIZE 63
 
@@ -53,7 +52,7 @@ typedef struct s_img
 	int			bpp;
 	int			line_len;
 	int			endian;
-	int			to_re_render;
+	int			to_render;
 	int			iterations;
 	int			shift_state;
 	int			shift_complex_feature;
@@ -87,8 +86,9 @@ int		julia(t_data *data, t_complex p_coord);
 int		mandelbrot(t_data *data, t_complex p_coord);
 void	parse_input(int ac, char **av, t_data *data);
 size_t	ft_strlen(char *str);
-void	ft_putnbr(int nbr);
-void	ft_putstr(char *str);
+void	ft_putnbr_fd(int nbr, int fd);
+void	ft_putstr_fd(char *str, int fd);
+void	invalid_input(void);
 void	increase_iterations(t_data *data);
 void	decrease_iterations(t_data *data);
 int		ft_mlx_init(t_data *data);
@@ -106,7 +106,8 @@ void	go_left(t_data *data);
 void	go_up(t_data *data);
 void	go_down(t_data *data);
 void	shift_color(t_data *data);
-void	shift_palette(t_data *data);
+void	shift_palette_up(t_data *data);
+void	shift_palette_down(t_data *data);
 void	switch_color_generator(t_data *data);
 void	draw_fractal_pixel(t_data *data, t_complex p_coord, int x, int y);
 int		render_fractal(t_data *data);

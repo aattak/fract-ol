@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:45:38 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 20:52:34 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/01 10:20:23 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	plane_init(t_data *data)
 void	color_init(t_data *data)
 {
 	int			i;
-	const int	palette[PALETTE_SIZE] = {//0xFFEB00
+	const int	palette[PALETTE_SIZE] = {
 		0xF7A654, 0xFC0019, 0x01FF4F, 0xFF01D7, 0x5600CC, 0x00EDF5, 0x5763CF,
-		0x99FF94, 0xFEF77C, 0xF7A654, 0xEF7779, 0xB3498B, 0xFFFF00, 0x39FF14,
+		0x99FF94, 0xFEF77C, 0xFFEB00, 0xEF7779, 0xB3498B, 0xFFFF00, 0x39FF14,
 		0xFF00FF, 0x00FFFF, 0x3A2170, 0xDB831C, 0xBE2924, 0xDE4959, 0x11808C,
 		0xFD00FF, 0xFDFF00, 0x00FF38, 0x00F9FF, 0x3C00FF, 0xE5A7AF, 0xEEBAA7,
 		0xF2CEA0, 0xF9E29A, 0xFFF68F, 0x384840, 0x406078, 0xD8C068, 0xC06868,
@@ -53,7 +53,7 @@ void	fractal_init(t_data *data)
 {
 	data->img.iterations = 30;
 	data->img.shift_state = 0;
-	data->img.to_re_render = 1;
+	data->img.to_render = 1;
 	plane_init(data);
 	color_init(data);
 }

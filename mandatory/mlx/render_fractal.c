@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:46:54 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 20:47:24 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/01 09:28:33 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ int	render_fractal(t_data *data)
 	int			y;
 	t_complex	p_coord;
 
-	if (data->img.to_re_render)
+	if (data->img.to_render)
 	{
 		x = 0;
 		y = 0;
-		data->img.to_re_render = 0;
+		data->img.to_render = 0;
 		while (y < HEIGHT)
 		{
 			p_coord.i = scale_y(y, data);

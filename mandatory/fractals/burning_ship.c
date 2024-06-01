@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 11:57:28 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/30 17:08:08 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/01 10:14:17 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	burning_ship(t_data *data, t_complex p_coord)
 {
 	int			i;
-	double	r_tmp;
+	double		r_tmp;
 	t_complex	z;
 	t_complex	c;
 
