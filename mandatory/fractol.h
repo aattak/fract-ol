@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:22:41 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/01 11:41:09 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/01 17:39:24 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	fractal_init(t_data *data);
 int		julia(t_data *data, t_complex p_coord);
 int		mandelbrot(t_data *data, t_complex p_coord);
 void	parse_input(int ac, char **av, t_data *data);
+double	ft_atod(char *str);
 size_t	ft_strlen(char *str);
 void	ft_putnbr_fd(int nbr, int fd);
 void	ft_putstr_fd(char *str, int fd);

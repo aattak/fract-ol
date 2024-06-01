@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:17:35 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/01 12:09:43 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/01 18:11:04 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,20 @@ void	ft_putstr_fd(char *str, int fd)
 	write(fd, str, ft_strlen(str));
 }
 
+void	how_to_use(void)
+{
+}
+
 void	invalid_input(void)
 {
-	ft_putstr_fd("USAGE :\n\t-Mandelbrot : ./fractol mandelbrot\n\t\
-		-Mandelbrot Cube : ./fractol mandelbrot_cube\n\t-Julia : ./fractol \
-		julia <real part of constant c> <imaginary part of constant c>\n\t\
-		-Julia Cube : ./fractol julia_cube <real part of constant c> \
-		<imaginary part of constant c>\n\t-Burning Ship : ./fractol \
-		burning_ship\n\t-Bird of Prey : ./fractol bird_of_prey\n", 2);
+	ft_putstr_fd("\nUSAGE :\n\n\t-Mandelbrot\t\t: ./fractol mandelbrot\n\n\t"\
+		"-Mandelbrot Cube\t: ./fractol mandelbrot_cube\n\n\t-Julia\t\t\t: "\
+		"./fractol julia <real part of constant c> "\
+		"<imaginary part of constant c>\n\n\t-Julia Cube\t\t: ./fractol "\
+		"julia_cube <real part of constant c> <imaginary part of constant c>"\
+		"\n\n\t-Burning Ship\t\t: ./fractol burning_ship\n\n\t-Bird of Prey"\
+		"\t\t: ./fractol bird_of_prey\n\nN.B: The real and the imaginary parts"\
+		" of the constant c must not exceed 9 with a maximum of 10 digits "\
+		"of precision.\n\n", 2);
 	exit(1);
 }
