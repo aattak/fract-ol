@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:29:18 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/01 17:43:03 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/01 20:26:17 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static void	two_args_input(char **av, t_data *data)
 {
 	(void)av;
-	if (1/*mandelbrot*/)
+	if (!ft_strcmp(av[1], "mandelbrot"))
 		data->fractal = mandelbrot;
-	else if (0/*mandelbrot cube*/)
+	else if (!ft_strcmp(av[1], "mandelbrot_cube"))
 		data->fractal = mandelbrot_cube;
-	else if (0/*burning ship*/)
+	else if (!ft_strcmp(av[1], "burning_ship"))
 		data->fractal = burning_ship;
-	else if (0/*bird of prey*/)
+	else if (!ft_strcmp(av[1], "bird_of_prey"))
 		data->fractal = bird_of_prey;
 	else
 		invalid_input();
@@ -30,9 +30,9 @@ static void	two_args_input(char **av, t_data *data)
 
 static void	four_args_input(char **av, t_data *data)
 {
-	if (1/*julia*/)
+	if (!ft_strcmp(av[1], "julia"))
 		data->fractal = julia;
-	else if (0/*julia cube*/)
+	else if (!ft_strcmp(av[1], "julia_cube"))
 		data->fractal = julia_cube;
 	else
 		invalid_input();
@@ -50,22 +50,3 @@ void	parse_input(int ac, char **av, t_data *data)
 	else
 		four_args_input(av, data);
 }
-/*
-void	parse_input(int ac, char **av, t_data *data)
-{
-	(void)ac;
-	(void)av;
-	data->img.shift_complex_feature = 0;
-	if (1)
-	{
-		data->img.c.r = -0.373;
-		data->img.c.i = 0.6;
-		data->fractal = julia;
-		data->img.shift_complex_feature = 1;
-	}
-	else
-		data->fractal = mandelbrot;
-	if (0)
-		invalid_input();
-}
-*/

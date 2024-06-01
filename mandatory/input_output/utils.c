@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 17:11:15 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/01 19:04:25 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/01 20:25:03 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,37 @@ double	ft_atod(char *str)
 	if (str[i])
 		invalid_input();
 	return (nbr * sign);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+	int	diff;
+
+	i = 0;
+	diff = 0;
+	while (s1[i] || s2[i])
+	{
+		if (s1[i] != s2[i])
+		{
+			diff = s1[i] - s2[i];
+			return (diff);
+		}
+		i++;
+	}
+	return (diff);
+}
+
+size_t	ft_strlen(char *str)
+{
+	size_t	len;
+
+	len = 0;
+	while (str[len])
+	{
+		len++;
+		if (!len)
+			return (--len);
+	}
+	return (len);
 }

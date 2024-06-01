@@ -6,25 +6,11 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:17:35 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/01 18:11:04 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/01 20:16:12 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
-
-size_t	ft_strlen(char *str)
-{
-	size_t	len;
-
-	len = 0;
-	while (str[len])
-	{
-		len++;
-		if (!len)
-			return (--len);
-	}
-	return (len);
-}
 
 void	ft_putnbr_fd(int nbr, int fd)
 {
