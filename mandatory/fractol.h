@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:22:41 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/02 08:11:39 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/02 11:45:35 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,51 +79,77 @@ typedef struct s_data
 	int			(*generate_color)(struct s_data, int);
 }	t_data;
 
+// Fractals functions
+int		mandelbrot(t_data *data, t_complex p_coord);
+int		julia(t_data *data, t_complex p_coord);
+int		mandelbrot_cube(t_data *data, t_complex p_coord);
+int		julia_cube(t_data *data, t_complex p_coord);
+int		burning_ship(t_data *data, t_complex p_coord);
+int		bird_of_prey(t_data *data, t_complex p_coord);
+
+// Fractal init functions
+void	fractal_init(t_data *data);
 void	plane_init(t_data *data);
 void	color_init(t_data *data);
-void	fractal_init(t_data *data);
-int		julia(t_data *data, t_complex p_coord);
-int		mandelbrot(t_data *data, t_complex p_coord);
+
+// Input-Output functions
 void	parse_input(int ac, char **av, t_data *data);
 double	ft_atod(char *str);
 int		ft_strcmp(char *s1, char *s2);
 size_t	ft_strlen(char *str);
-void	ft_putnbr_fd(int nbr, int fd);
 void	ft_putstr_fd(char *str, int fd);
-void	invalid_input(void);
+void	ft_putnbr_fd(int nbr, int fd);
+
+// How-to_Use functions
 void	how_to_use(void);
-void	increase_iterations(t_data *data);
-void	decrease_iterations(t_data *data);
-int		ft_mlx_init(t_data *data);
-void	mlx_mem_free(t_data *data);
-int		mlx_quit(t_data *data);
-int		mouse_press_hook(int button, int x, int y, t_data *data);
-int		cursor_move_hook(int x, int y, t_data *data);
-int		key_press_hook(int keycode, t_data *data);
-int		key_release_hook(int keycode, t_data *data);
-void	shift_complex(int x, int y, t_data *data);
-void	shift_complex_on(t_data *data);
-void	shift_complex_off(t_data *data);
+void	invalid_input(void);
+
+// Arrows moving functions
 void	go_right(t_data *data);
 void	go_left(t_data *data);
 void	go_up(t_data *data);
 void	go_down(t_data *data);
+
+// Zooming functions
+void	zoom_in(t_data *data, int x, int y);
+void	zoom_out(t_data *data, int x, int y);
+
+// Color generating functions
+void	switch_color_generator(t_data *data);
+int		rgb_multiplier(t_data data, int iterations);
+int		rgb_adder(t_data data, int iterations);
+
+// Color shifting functions
 void	shift_color(t_data *data);
 void	shift_palette_up(t_data *data);
 void	shift_palette_down(t_data *data);
-void	switch_color_generator(t_data *data);
-void	draw_fractal_pixel(t_data *data, t_complex p_coord, int x, int y);
-int		render_fractal(t_data *data);
-int		rgb_adder(t_data data, int iterations);
-int		rgb_multiplier(t_data data, int iterations);
-void	zoom_in(t_data *data, int x, int y);
-void	zoom_out(t_data *data, int x, int y);
+
+// Iterations changing functions
+void	increase_iterations(t_data *data);
+void	decrease_iterations(t_data *data);
+
+// C complex contant shifting functions
+void	shift_complex_on(t_data *data);
+void	shift_complex_off(t_data *data);
+void	shift_complex(int x, int y, t_data *data);
+
+// Scaling function
 double	scale_x(int x, t_data *data);
 double	scale_y(int y, t_data *data);
 
-int	julia_cube(t_data *data, t_complex p_coord);
-int	mandelbrot_cube(t_data *data, t_complex p_coord);
-int	burning_ship(t_data *data, t_complex p_coord);
-int	bird_of_prey(t_data *data, t_complex p_coord);
+// Fractal rendering functions
+int		render_fractal(t_data *data);
+void	draw_fractal_pixel(t_data *data, t_complex p_coord, int x, int y);
+
+// MLX management functions
+int		ft_mlx_init(t_data *data);
+void	mlx_mem_free(t_data *data);
+int		mlx_quit(t_data *data);
+
+// MLX hooks functions
+int		key_press_hook(int keycode, t_data *data);
+int		key_release_hook(int keycode, t_data *data);
+int		mouse_press_hook(int button, int x, int y, t_data *data);
+int		cursor_move_hook(int x, int y, t_data *data);
 
 #endif
