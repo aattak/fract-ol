@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:27:26 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 20:53:10 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/02 10:59:28 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,8 @@ int	mlx_quit(t_data *data)
 {
 	mlx_loop_end(data->mlx_ptr);
 	mlx_loop_hook(data->mlx_ptr, NULL, NULL);
+	ft_putstr_fd("\n+------------------------------------------+\n|  "\
+		"Wish you enjoyed it, have a good day!!  "\
+		"|\n+------------------------------------------+\n\n", 1);
 	return (0);
 }

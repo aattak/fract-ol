@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:22:41 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/01 20:25:29 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/02 08:11:39 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ size_t	ft_strlen(char *str);
 void	ft_putnbr_fd(int nbr, int fd);
 void	ft_putstr_fd(char *str, int fd);
 void	invalid_input(void);
+void	how_to_use(void);
 void	increase_iterations(t_data *data);
 void	decrease_iterations(t_data *data);
 int		ft_mlx_init(t_data *data);

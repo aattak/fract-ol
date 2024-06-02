@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 14:52:58 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/01 09:26:10 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/02 08:18:52 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	key_press_hook(int keycode, t_data *data)
 
 	if (keycode == XK_Escape)
 		mlx_quit(data);
-	else if (keycode == XK_KP_Add)
+	else if (keycode == XK_KP_Add || keycode == XK_equal)
 		increase_iterations(data);
-	else if (keycode == XK_KP_Subtract)
+	else if (keycode == XK_KP_Subtract || keycode == XK_minus)
 		decrease_iterations(data);
 	else if (keycode == XK_space)
 		shift_color(data);
@@ -44,12 +44,14 @@ int	key_release_hook(int keycode, t_data *data)
 		go_up(data);
 	else if (keycode == XK_Down)
 		go_down(data);
-	else if (keycode == XK_p)
+	else if (keycode == XK_n)
 		shift_palette_up(data);
-	else if (keycode == XK_o)
+	else if (keycode == XK_p)
 		shift_palette_down(data);
 	else if (keycode == XK_c)
 		switch_color_generator(data);
+	else if (keycode == XK_h)
+		how_to_use();
 	else if (keycode == XK_Shift_L && data->img.shift_complex_feature == 1)
 		shift_complex_off(data);
 	else if (keycode == XK_BackSpace)
