@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:29:18 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/03 10:26:16 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/03 16:28:00 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 static void	invalid_input(void)
 {
-	ft_putstr_fd("\n| USAGE :\n\n\t-Mandelbrot\t\t: ./fractol mandelbrot\n\n\t"\
-		"-Mandelbrot Cube\t: ./fractol mandelbrot_cube\n\n\t-Julia\t\t\t: "\
-		"./fractol julia <real part of constant c> "\
-		"<imaginary part of constant c>\n\n\t-Julia Cube\t\t: ./fractol "\
+	ft_putstr_fd("\n| USAGE :\n\n\t-Mandelbrot\t\t: ./fractol_bonus mandelbrot"\
+		"\n\n\t-Mandelbrot Cube\t: ./fractol_bonus mandelbrot_cube\n\n\t"\
+		"-Julia\t\t\t: ./fractol_bonus julia <real part of constant c> "\
+		"<imaginary part of constant c>\n\n\t-Julia Cube\t\t: ./fractol_bonus "\
 		"julia_cube <real part of constant c> <imaginary part of constant c>"\
-		"\n\n\t-Burning Ship\t\t: ./fractol burning_ship\n\n\t-Bird of Prey"\
-		"\t\t: ./fractol bird_of_prey\n\n| N.B: The real and the imaginary "\
-		"parts of the constant c must not exceed 9 with a maximum of "\
-		"10 digits of precision.\n\n", 2);
+		"\n\n\t-Burning Ship\t\t: ./fractol_bonus burning_ship\n\n\t"\
+		"-Bird of Prey\t\t: ./fractol_bonus bird_of_prey\n\n| N.B: The real "\
+		"and the imaginary parts of the constant c must not exceed 9 with "\
+		"a maximum of 10 digits of precision.\n\n", 2);
 	exit(1);
 }
 
