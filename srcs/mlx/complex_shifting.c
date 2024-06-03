@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia_cube.c                                       :+:      :+:    :+:   */
+/*   complex_shifting.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/31 12:49:35 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 12:51:12 by aattak           ###   ########.fr       */
+/*   Created: 2024/05/30 16:24:42 by aattak            #+#    #+#             */
+/*   Updated: 2024/06/03 10:10:25 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../../includes/fractol.h"
 
-int	julia_cube(t_data *data, t_complex p_coord)
+void	shift_complex(int x, int y, t_data *data)
 {
-	int			i;
-	double		r_tmp;
-	t_complex	z;
-	t_complex	c;
+	data->img.c.r = scale_x(x, data);
+	data->img.c.i = scale_y(y, data);
+	data->img.to_render = 1;
+}
 
-	i = 0;
-	z = p_coord;
-	c = data->img.c;
-	while (i < data->img.iterations && ((z.r * z.r) + (z.i * z.i)) < 4)
-	{
-		r_tmp = z.r;
-		z.r = (z.r * z.r * z.r) - (3 * z.r * z.i * z.i) + c.r;
-		z.i = (3 * r_tmp * r_tmp * z.i) - (z.i * z.i * z.i) + c.i;
-		i++;
-	}
-	return (i);
+void	shift_complex_on(t_data *data)
+{
+	data->img.shift_state = 1;
+}
+
+void	shift_complex_off(t_data *data)
+{
+	data->img.shift_state = 0;
 }

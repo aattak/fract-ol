@@ -6,11 +6,11 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 14:52:58 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/02 08:18:52 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/03 10:11:03 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../../includes/fractol.h"
 
 int	key_press_hook(int keycode, t_data *data)
 {

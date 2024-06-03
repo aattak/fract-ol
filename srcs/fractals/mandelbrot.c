@@ -6,11 +6,11 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:48:51 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 17:01:58 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/03 09:50:20 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../../includes/fractol.h"
 
 int	mandelbrot(t_data *data, t_complex p_coord)
 {

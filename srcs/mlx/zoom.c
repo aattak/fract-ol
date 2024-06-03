@@ -6,11 +6,11 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:11:45 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/01 09:30:03 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/03 10:09:56 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../../includes/fractol.h"
 
 void	zoom_in(t_data *data, int x, int y)
 {

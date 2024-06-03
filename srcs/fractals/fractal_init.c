@@ -6,11 +6,11 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:45:38 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/01 10:20:23 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/03 09:48:38 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../../includes/fractol.h"
 
 void	plane_init(t_data *data)
 {

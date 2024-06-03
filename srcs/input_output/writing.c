@@ -6,11 +6,11 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:17:35 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/02 11:05:22 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/03 10:10:18 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../../includes/fractol.h"
 
 void	ft_putnbr_fd(int nbr, int fd)
 {
@@ -85,18 +85,4 @@ void	how_to_use(void)
 		"\t|\n|\tChanging the number of iterations value :\t\t\t\t\t|\n|\t\t\t"\
 		"\t\t\t\t\t\t\t\t|\n|\t\t>'+' key : ", 1);
 	htu_part_two();
-}
-
-void	invalid_input(void)
-{
-	ft_putstr_fd("\nUSAGE :\n\n\t-Mandelbrot\t\t: ./fractol mandelbrot\n\n\t"\
-		"-Mandelbrot Cube\t: ./fractol mandelbrot_cube\n\n\t-Julia\t\t\t: "\
-		"./fractol julia <real part of constant c> "\
-		"<imaginary part of constant c>\n\n\t-Julia Cube\t\t: ./fractol "\
-		"julia_cube <real part of constant c> <imaginary part of constant c>"\
-		"\n\n\t-Burning Ship\t\t: ./fractol burning_ship\n\n\t-Bird of Prey"\
-		"\t\t: ./fractol bird_of_prey\n\nN.B: The real and the imaginary parts"\
-		" of the constant c must not exceed 9 with a maximum of 10 digits "\
-		"of precision.\n\n", 2);
-	exit(1);
 }

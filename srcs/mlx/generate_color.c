@@ -6,11 +6,11 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 09:15:35 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/01 09:24:59 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/03 10:10:36 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../../includes/fractol.h"
 
 int	rgb_adder(t_data data, int iterations)
 {

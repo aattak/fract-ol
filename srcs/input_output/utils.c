@@ -6,11 +6,11 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 17:11:15 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/01 20:25:03 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/03 10:10:12 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../../includes/fractol.h"
 
 static void	skip_whitespaces(char *str, int *i)
 {
@@ -57,7 +57,7 @@ double	ft_atod(char *str)
 	}
 	skip_whitespaces(str, &i);
 	if (str[i])
-		invalid_input();
+		return (1337);
 	return (nbr * sign);
 }
 

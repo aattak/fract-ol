@@ -6,11 +6,11 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:59:12 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/01 09:28:06 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/03 10:11:13 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../../includes/fractol.h"
 
 void	go_right(t_data *data)
 {

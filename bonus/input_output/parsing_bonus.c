@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:29:18 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/01 20:26:17 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/03 10:26:16 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../../includes/fractol_bonus.h"
+
+static void	invalid_input(void)
+{
+	ft_putstr_fd("\n| USAGE :\n\n\t-Mandelbrot\t\t: ./fractol mandelbrot\n\n\t"\
+		"-Mandelbrot Cube\t: ./fractol mandelbrot_cube\n\n\t-Julia\t\t\t: "\
+		"./fractol julia <real part of constant c> "\
+		"<imaginary part of constant c>\n\n\t-Julia Cube\t\t: ./fractol "\
+		"julia_cube <real part of constant c> <imaginary part of constant c>"\
+		"\n\n\t-Burning Ship\t\t: ./fractol burning_ship\n\n\t-Bird of Prey"\
+		"\t\t: ./fractol bird_of_prey\n\n| N.B: The real and the imaginary "\
+		"parts of the constant c must not exceed 9 with a maximum of "\
+		"10 digits of precision.\n\n", 2);
+	exit(1);
+}
 
 static void	two_args_input(char **av, t_data *data)
 {
@@ -38,10 +52,12 @@ static void	four_args_input(char **av, t_data *data)
 		invalid_input();
 	data->img.c.r = ft_atod(av[2]);
 	data->img.c.i = ft_atod(av[3]);
+	if (data->img.c.r == 1337 || data->img.c.i == 1337)
+		invalid_input();
 	data->img.shift_complex_feature = 1;
 }
 
-void	parse_input(int ac, char **av, t_data *data)
+void	b_parse_input(int ac, char **av, t_data *data)
 {
 	if (ac == 1 || ac == 3 || ac > 4)
 		invalid_input();

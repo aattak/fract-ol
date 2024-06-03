@@ -6,11 +6,11 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:27:26 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/02 10:59:28 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/03 10:10:54 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../../includes/fractol.h"
 
 static int	win_alloc_failure(t_data *data)
 {

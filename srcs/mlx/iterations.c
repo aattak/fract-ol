@@ -6,11 +6,11 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:10:22 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/01 17:42:22 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/03 10:10:43 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../../includes/fractol.h"
 
 void	increase_iterations(t_data *data)
 {

@@ -6,11 +6,11 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 17:04:34 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/01 09:29:14 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/03 10:11:29 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../../includes/fractol.h"
 
 void	shift_color(t_data *data)
 {

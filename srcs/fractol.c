@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 14:48:14 by aattak            #+#    #+#             */
-/*   Updated: 2024/05/31 13:01:46 by aattak           ###   ########.fr       */
+/*   Created: 2024/05/19 17:22:54 by aattak            #+#    #+#             */
+/*   Updated: 2024/06/03 09:47:44 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../includes/fractol.h"
 
-int	julia(t_data *data, t_complex p_coord)
+int	main(int ac, char **av)
 {
-	int			i;
-	double		r_tmp;
-	t_complex	z;
-	t_complex	c;
+	t_data		data;
 
-	i = 0;
-	z = p_coord;
-	c = data->img.c;
-	while (i < data->img.iterations && ((z.r * z.r) + (z.i * z.i)) < 4)
-	{
-		r_tmp = z.r;
-		z.r = (z.r * z.r) - (z.i * z.i) + c.r;
-		z.i = (2 * r_tmp * z.i) + c.i;
-		i++;
-	}
-	return (i);
+	parse_input(ac, av, &data);
+	how_to_use();
+	fractal_init(&data);
+	if (ft_mlx_init(&data))
+		return (1);
+	render_fractal(&data);
+	mlx_loop(data.mlx_ptr);
+	mlx_mem_free(&data);
+	return (0);
 }

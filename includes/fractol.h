@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:22:41 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/02 11:45:35 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/03 09:18:39 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@
 # define SCROLL_ZOOM_IN 4
 # define SCROLL_ZOOM_OUT 5
 
-//# define COLOR 0x0005142B
 # define COLOR_SHIFT 0x00050505
 # define PALETTE_SIZE 63
 
@@ -82,10 +81,6 @@ typedef struct s_data
 // Fractals functions
 int		mandelbrot(t_data *data, t_complex p_coord);
 int		julia(t_data *data, t_complex p_coord);
-int		mandelbrot_cube(t_data *data, t_complex p_coord);
-int		julia_cube(t_data *data, t_complex p_coord);
-int		burning_ship(t_data *data, t_complex p_coord);
-int		bird_of_prey(t_data *data, t_complex p_coord);
 
 // Fractal init functions
 void	fractal_init(t_data *data);
@@ -100,9 +95,8 @@ size_t	ft_strlen(char *str);
 void	ft_putstr_fd(char *str, int fd);
 void	ft_putnbr_fd(int nbr, int fd);
 
-// How-to_Use functions
+// How-to_Use function
 void	how_to_use(void);
-void	invalid_input(void);
 
 // Arrows moving functions
 void	go_right(t_data *data);
