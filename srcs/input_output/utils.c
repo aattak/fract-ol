@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 17:11:15 by aattak            #+#    #+#             */
-/*   Updated: 2024/06/03 10:10:12 by aattak           ###   ########.fr       */
+/*   Updated: 2024/06/04 09:36:07 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,33 @@ static void	skip_whitespaces(char *str, int *i)
 		(*i)++;
 }
 
-static int	check_sign(char *str, int *i)
+static double	get_number(char *str, int *i)
 {
-	int	sign;
+	int		flag;
+	double	nbr;
+	double	precision;
 
-	sign = 1;
-	if (str[*i] == '-' || str[*i] == '+')
+	nbr = 0;
+	flag = 1;
+	while (str[*i] >= '0' && str[*i] <= '9' && nbr == 0)
 	{
-		if (str[*i] == '-')
-			sign = -1;
-		(*i)++;
+		nbr = (nbr * 10) + str[(*i)++] - '0';
+		flag = 0;
 	}
-	return (sign);
+	if (str[*i] == '.')
+	{
+		(*i)++;
+		precision = 0.1;
+		while (str[*i] >= '0' && str[*i] <= '9' && precision >= 0.0000000001)
+		{
+			nbr = nbr + ((str[(*i)++] - '0') * precision);
+			precision /= 10;
+			flag = 0;
+		}
+	}
+	if (flag)
+		return (1337);
+	return (nbr);
 }
 
 double	ft_atod(char *str)
@@ -37,26 +52,19 @@ double	ft_atod(char *str)
 	int		i;
 	int		sign;
 	double	nbr;
-	double	precision;
 
 	i = 0;
-	precision = 0.1;
-	nbr = 0;
+	sign = 1;
 	skip_whitespaces(str, &i);
-	sign = check_sign(str, &i);
-	while (str[i] >= '0' && str[i] <= '9' && nbr == 0)
-		nbr = (nbr * 10) + str[i++] - '0';
-	if (str[i] == '.')
+	if (str[i] == '-' || str[i] == '+')
 	{
+		if (str[i] == '-')
+			sign = -1;
 		i++;
-		while (str[i] >= '0' && str[i] <= '9' && precision >= 0.0000000001)
-		{
-			nbr = nbr + ((str[i++] - '0') * precision);
-			precision /= 10;
-		}
 	}
+	nbr = get_number(str, &i);
 	skip_whitespaces(str, &i);
-	if (str[i])
+	if (str[i] || !str[0] || nbr == 1337)
 		return (1337);
 	return (nbr * sign);
 }
