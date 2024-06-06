@@ -6,7 +6,7 @@
 #    By: aattak <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/19 10:16:42 by aattak            #+#    #+#              #
-#    Updated: 2024/06/03 13:25:00 by aattak           ###   ########.fr        #
+#    Updated: 2024/06/06 13:15:22 by aattak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,10 @@
 NAME 			=	fractol
 
 B_NAME 			=	fractol_bonus
+
+LIB_FRACTOL		=	libfractol.a
+
+B_LIB_FRACTOL	=	libfractol_bonus.a
 
 HEADERS			=	-I includes/ -I /usr/local/include
 
@@ -55,7 +59,7 @@ B_OBJS			=	$(B_SRCS:.c=.o)
  ################### Fractol Creation Rules ################### 
 ################################################################
 
-.c.o:
+%.o: %.c
 		@echo "\033[1;32m\nCompiling objects ...\033[0m"
 		$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 
@@ -69,14 +73,24 @@ $(FRACTOL_OBJ): includes/fractol.h
 
 $(B_FRACTOL_OBJ): includes/fractol.h includes/fractol_bonus.h
 
-$(NAME): $(OBJS) $(FRACTOL_OBJ)
+$(LIB_FRACTOL): $(OBJS)
+		@echo "\033[1;32m\nBulding libfractol.a library ...\033[0m"
+		ar rcs $(LIB_FRACTOL) $(OBJS)
+		@echo "\033[1;32m\nlibfractol.a library built successfully\n\033[0m"
+
+$(B_LIB_FRACTOL): $(B_OBJS)
+		@echo "\033[1;32m\nBulding libfractol_bonus.a library ...\033[0m"
+		ar rcs $(B_LIB_FRACTOL) $(B_OBJS)
+		@echo "\033[1;32m\nlibfractol_bonus.a library built successfully\n\033[0m"
+
+$(NAME): $(LIB_FRACTOL) $(FRACTOL_OBJ)
 		@echo "\033[1;32m\nBulding fractol ...\033[0m"
-		$(CC) $(CFLAGS) $(HEADERS) $(FRACTOL_OBJ) $(OBJS) $(LIBS) -o $(NAME)
+		$(CC) $(CFLAGS) $(HEADERS) $(FRACTOL_OBJ) $(LIB_FRACTOL) $(LIBS) -o $(NAME)
 		@echo "\033[1;32m\nfractol built successfully\n\033[0m"
 
-$(B_NAME) : $(OBJS) $(B_OBJS) $(B_FRACTOL_OBJ)
+$(B_NAME) : $(LIB_FRACTOL) $(B_LIB_FRACTOL) $(B_FRACTOL_OBJ)
 		@echo "\033[1;32m\nBulding fractol_bonus ...\033[0m"
-		$(CC) $(CFLAGS) $(HEADERS) $(B_FRACTOL_OBJ) $(OBJS) $(B_OBJS) $(LIBS) -o $(B_NAME)
+		$(CC) $(CFLAGS) $(HEADERS) $(B_FRACTOL_OBJ) $(B_LIB_FRACTOL) $(LIB_FRACTOL) $(LIBS) -o $(B_NAME)
 		@echo "\033[1;32m\nfractol_bonus built successfully\n\033[0m"
 
 bonus: $(B_NAME)
@@ -88,7 +102,7 @@ bonus: $(B_NAME)
 re: fclean all
 
 clean:
-		@echo "\033[1;31m\nCleaning objects ...\033[0m"
+		@echo "\033[1;32m\nCleaning objects ...\033[0m"
 		@echo "\033[1;31m\nRemove fractol object ...\033[0m"
 		$(RM) $(FRACTOL_OBJ)
 		@echo "\033[1;31m\nRemove fractol_bonus object ...\033[0m"
@@ -100,7 +114,12 @@ clean:
 		@echo "\033[1;32m\nCleaning terminated successfully\n\033[0m"
 
 fclean: clean
-		@echo "\033[1;31m\nCleaning executables ...\033[0m"
+		@echo "\033[1;32m\nCleaning libraries ...\033[0m"
+		@echo "\033[1;31m\nRemove libractol.a library ...\033[0m"
+		$(RM) $(LIB_FRACTOL)
+		@echo "\033[1;31m\nRemove libfractol_bonus.a library ...\033[0m"
+		$(RM) $(B_LIB_FRACTOL)
+		@echo "\033[1;32m\nCleaning executables ...\033[0m"
 		@echo "\033[1;31m\nRemove fractol ...\033[0m"
 		$(RM) $(NAME)
 		@echo "\033[1;31m\nRemove fractol_bonus ...\033[0m"
@@ -108,4 +127,4 @@ fclean: clean
 		@echo "\033[1;32m\nFull Cleaning terminated successfully\n\033[0m"
 
 .PHONY: all clean fclean re bonus
-.SECONDARY: $(FRACTOL_OBJ) $(B_FRACTOL_OBJ) $(OBJS) $(B_OBJS)
+.SECONDARY: $(FRACTOL_OBJ) $(B_FRACTOL_OBJ) $(OBJS) $(B_OBJS) $(LIB_FRACTOL) $(B_LIB_FRACTOL)
